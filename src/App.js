@@ -39,7 +39,7 @@ class App extends Component {
       updatedItems = [...this.state.items];
       updatedItems[index] = newItem;
     } else {
-      // Create a copy of the items array with the new item
+      // Create a copy of the items and array with the new item
       updatedItems = [...this.state.items, newItem];
     }
   
