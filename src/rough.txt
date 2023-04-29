@@ -1,0 +1,85 @@
+   handleSubmit =(e)=>{
+     e.preventDefault();
+
+    
+  
+     const newItem ={
+       id: this.state.id,
+       title: this.state.item
+     }
+     console.log(newItem)
+  spread operator (...) allows us to quickly copy all or part of an existing array or object into another array or object
+  const updateItems = [...this.state.items, newItem];
+     this.setState({
+       items: updateItems,
+       item: "",
+       id: uuid(),
+      editItem: "false"
+   })
+   }
+   handleSubmit = (e) => 
+     e.preventDefault();
+
+     const newItem = {
+       id: this.state.id,
+       title: this.state.item
+     }
+  
+     let updatedItems;
+  
+     if (this.state.editItem) 
+        Find the index of the item being edited in the items array
+       const index = this.state.items.findIndex(item => item.id === this.state.id);
+  
+   Create a copy of the items array with the edited item
+       updatedItems = [...this.state.items];
+       updatedItems[index] = newItem;
+      else {
+       Create a copy of the items array with the new item
+      updatedItems = [...this.state.items, newItem];
+    }
+  
+     this.setState({
+       items: updatedItems,
+       item: "",
+       id: uuid(),
+       editItem: false
+     });
+   
+
+   clearList =()=>
+     this.setState
+       items : []
+     
+   
+   handleDelete= (id)=>
+     const filteredItems = this.state.items.filter(item) =>
+       return item.id!== id
+     
+     this.setState
+       {
+         items: filteredItems
+       }
+     
+   
+
+   handleEdit=(id)=>{
+
+    
+    
+     const filteredItems = this.state.items.filter((item) =>{
+       return item.id!== id
+     })
+
+     const selectedItem = this.state.items.find(item=> item.id === id);
+     console.log(selectedItem);
+     this.setState(
+       {
+         items: filteredItems,
+         item : selectedItem.title,
+         editItem: false,
+         id: id
+       }
+     )
+    
+   }
